@@ -242,6 +242,40 @@
         },
         "type": "Categorical",
         "howCreated": "User"
+      },
+      {
+        "name": "305c9d38e17ea02d5035",
+        "displayName": "Organisation ID",
+        "ordinal": 9,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Job Position"
+              }
+            },
+            "Property": "organisation_id"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "c513a3b28ca5719c260e",
+        "displayName": "Job Position Status",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Job Position"
+              }
+            },
+            "Property": "job_position_status"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
       }
     ],
     "filterSortOrder": "Custom"
