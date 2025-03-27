@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "9e78f292051a640d0a07",
+  "position": {
+    "x": 302.89398451459192,
+    "y": 31.256700416914839,
+    "z": 2000,
+    "height": 114.35378201310303,
+    "width": 194.40142942227516,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reference"
+                    }
+                  },
+                  "Property": "Avg Requested to Submitted Days (Reviewed)"
+                }
+              },
+              "queryRef": "Reference.Avg Requested to Submitted Days (Reviewed)",
+              "nativeQueryRef": "Days to Submission",
+              "displayName": "Days to Submission"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Reference"
+                    }
+                  },
+                  "Property": "Avg Submitted to Reviewed Days"
+                }
+              },
+              "queryRef": "Reference.Avg Submitted to Reviewed Days",
+              "nativeQueryRef": "Days to Review",
+              "displayName": "Days to Review"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Reference"
+                  }
+                },
+                "Property": "Avg Requested to Submitted Days (Reviewed)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "card": [
+        {
+          "properties": {
+            "barShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "keepLayerOrder": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "c674d64ba5ba1ab88396"
+}

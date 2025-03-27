@@ -30,7 +30,7 @@ table Reference
 			)
 			```
 		formatString: 0
-		displayFolder: _References
+		displayFolder: _Reference Outcomes
 		lineageTag: 1669d29c-abae-4076-8450-325285ca51c5
 
 	measure 'Number of Submitted References' =
@@ -41,9 +41,9 @@ table Reference
 			        Reference[ref_completed_date],
 			        Dates[Date]
 			    )
-			)
+			) + 0
 		formatString: # ##0
-		displayFolder: _References
+		displayFolder: _References Submitted
 		lineageTag: 571e7b98-73cc-4750-8f12-2cb3d219067f
 
 		annotation PBI_FormatHint = {"isCustom":true}
@@ -55,12 +55,12 @@ table Reference
 
 	measure 'Number of References' = COUNTROWS(Reference) + 0
 		formatString: # ##0
-		displayFolder: _References
+		displayFolder: _References Requested
 		lineageTag: fe038b7a-df2e-4144-9133-1f64b61e0628
 
 		annotation PBI_FormatHint = {"isCustom":true}
 
-	measure 'Rolling Avg Requested to Submitted Days' = ```
+	measure 'Rolling Avg Requested to Submitted Days' =
 			
 			CALCULATE (
 			    [Avg Requested to Submitted Days],
@@ -69,19 +69,14 @@ table Reference
 			        LASTDATE (Dates[Date]),
 			        -[Number of Months for Rolling Avg],
 			        MONTH
-			    ),
-			    USERELATIONSHIP(
-			        Reference[ref_completed_date], 
-			        Dates[Date]
 			    )
 			)
-			```
 		displayFolder: _Rolling Avg Days
 		lineageTag: 7782a940-1041-4e40-aec4-6602b6abdc92
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Rolling Avg Requested to Reviewed Days' = ```
+	measure 'Rolling Avg Requested to Reviewed Days' =
 			
 			CALCULATE (
 			    [Avg Requested to Reviewed Days],
@@ -90,31 +85,52 @@ table Reference
 			        LASTDATE (Dates[Date]),
 			        -[Number of Months for Rolling Avg],
 			        MONTH
-			    ),
+			    )
+			)
+		displayFolder: _Rolling Avg Days
+		lineageTag: 05c43ece-3a31-45a5-b65d-28685ca8eab2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Requested to Reviewed Days' = ```
+			
+			CALCULATE(
+			    DIVIDE([Avg Requested To Reviewed Time], (60*60*24)),
+			    USERELATIONSHIP(
+			        Reference[ref_approved_date], 
+			        Dates[Date]
+			    )
+			) + 0
+			```
+		formatString: 0.00
+		displayFolder: _Avg Days
+		lineageTag: 0b1c66ca-7c42-4173-ac1b-33d9d5f49b32
+
+	measure 'Avg Requested to Submitted Days' = ```
+			
+			CALCULATE(
+			    DIVIDE([Avg Requested To Submitted Time], (60*60*24)),
+			    USERELATIONSHIP(
+			        Reference[ref_completed_date], 
+			        Dates[Date]
+			    )
+			)
+			```
+		displayFolder: _Avg Days
+		lineageTag: 5a3f2847-3c4a-4544-8c20-ce3dc83b2edc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Submitted to Reviewed Days' = ```
+			
+			CALCULATE(
+			    DIVIDE([Avg Submitted To Reviewed Time], (60*60*24)),
 			    USERELATIONSHIP(
 			        Reference[ref_approved_date], 
 			        Dates[Date]
 			    )
 			)
 			```
-		displayFolder: _Rolling Avg Days
-		lineageTag: 05c43ece-3a31-45a5-b65d-28685ca8eab2
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Avg Requested to Reviewed Days' = DIVIDE([Avg Requested To Reviewed Time], (60*60*24))
-		displayFolder: _Avg Days
-		lineageTag: 0b1c66ca-7c42-4173-ac1b-33d9d5f49b32
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Avg Requested to Submitted Days' = DIVIDE([Avg Requested To Submitted Time], (60*60*24))
-		displayFolder: _Avg Days
-		lineageTag: 5a3f2847-3c4a-4544-8c20-ce3dc83b2edc
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Avg Submitted to Reviewed Days' = DIVIDE([Avg Submitted To Reviewed Time], (60*60*24))
 		displayFolder: _Avg Days
 		lineageTag: ef0454e8-fda6-420a-b489-99a7f8ca969c
 
@@ -131,27 +147,27 @@ table Reference
 			)
 			```
 		formatString: 0
-		displayFolder: _References
+		displayFolder: _Reference Outcomes
 		lineageTag: b09ce729-9450-46c9-b8b4-30e300fb6ed5
 
 	measure 'Number of Reviewed References' = [Number of Approved References] + [Number of Declined References]
 		formatString: 0
-		displayFolder: _References
+		displayFolder: _References Reviewed
 		lineageTag: e575a2fc-989c-417f-8ebb-1f2cdd7a0084
 
 	measure 'Approval Rate' = DIVIDE([Number of Approved References], [Number of References])
 		formatString: 0%;-0%;0%
-		displayFolder: _References
+		displayFolder: _Rates
 		lineageTag: 28c48381-621b-443f-997e-fa8941e5f8d3
 
 	measure 'Been Reviewed %' = DIVIDE([Number of Reviewed References], [Number of References])
-		displayFolder: _References
+		displayFolder: _Rates
 		lineageTag: 81beebc8-283f-4158-96dd-63eae68f9550
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Been Submitted %' = DIVIDE([Number of Submitted References], [Number of References])
-		displayFolder: _References
+		displayFolder: _Rates
 		lineageTag: d362ea6f-5537-4c8b-bdf0-e7db7eb936a6
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -174,6 +190,161 @@ table Reference
 			```
 		displayFolder: _Rolling Avg Days
 		lineageTag: 0efb6bc3-ebd4-4426-a7dc-6946c495c498
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Number of References PY' = ```
+			
+			CALCULATE(
+			    [Number of References],
+			    DATEADD(
+			        Dates[Date],
+			        -1,
+			        YEAR    
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: _References Requested
+		lineageTag: f7ff9466-3588-4a97-8e7d-dc8bb681f965
+
+	measure 'Number of References YoY' = [Number of References] - [Number of References PY]
+		formatString: 0
+		displayFolder: _References Requested
+		lineageTag: f025d84f-eaa9-46a2-8cb7-9afcdd322e0a
+
+	measure 'Number of References YoY %' = ```
+			
+			var _CY = [Number of References] 
+			var _PY = [Number of References PY]
+			RETURN DIVIDE(_CY - _PY, _PY, 0)
+			```
+		displayFolder: _References Requested
+		lineageTag: d0b8d6a6-10cd-4a47-9033-3701a498f52f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Number of References Change' = [Number of References YoY] & " | " & FORMAT([Number of References YoY %], "0% ▲;-0% ▼;0%")
+		displayFolder: _References Requested
+		lineageTag: 0c991fa1-35a2-4629-90f9-fad0baf11b70
+
+	measure 'Number of Submitted References PY' = ```
+			
+			CALCULATE(
+			    [Number of Submitted References],
+			    DATEADD(
+			        Dates[Date],
+			        -1,
+			        YEAR    
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: _References Submitted
+		lineageTag: 79e4bcd1-7d83-4190-a379-578e79567ee3
+
+	measure 'Number of Submitted References YoY' = [Number of Submitted References] - [Number of Submitted References PY]
+		formatString: 0
+		displayFolder: _References Submitted
+		lineageTag: 0644623d-079e-4eb0-ae54-c4f5dfcf841e
+
+	measure 'Number of Submitted References YoY %' = ```
+			
+			var _CY = [Number of Submitted References] 
+			var _PY = [Number of Submitted References PY]
+			RETURN DIVIDE(_CY - _PY, _PY, 0)
+			```
+		displayFolder: _References Submitted
+		lineageTag: e14beca0-b9ac-475a-a32e-15c56c5eba07
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Number of Submitted References Change' = [Number of Submitted References YoY] & " | " & FORMAT([Number of Submitted References YoY %], "0% ▲;-0% ▼;0%")
+		displayFolder: _References Submitted
+		lineageTag: 2eb51598-026a-4ce2-bd12-7139512c5ef9
+
+	measure 'Number of Reviewed References PY' = ```
+			
+			CALCULATE(
+			    [Number of Reviewed References],
+			    DATEADD(
+			        Dates[Date],
+			        -1,
+			        YEAR    
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: _References Reviewed
+		lineageTag: fdbd4858-da6c-435b-b0c5-e0a2606b58c9
+
+	measure 'Number of Reviewed References YoY' = [Number of Reviewed References] - [Number of Reviewed References PY]
+		formatString: 0
+		displayFolder: _References Reviewed
+		lineageTag: d15d2a63-c499-456c-a5e1-6168c91225d2
+
+	measure 'Number of Reviewed References YoY %' = ```
+			
+			var _CY = [Number of Reviewed References] 
+			var _PY = [Number of Reviewed References PY]
+			RETURN DIVIDE(_CY - _PY, _PY, 0)
+			```
+		displayFolder: _References Reviewed
+		lineageTag: 82f8b927-e152-4171-8699-0466ccd8b54a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Number of Reviewed References Change' = [Number of Reviewed References YoY] & " | " & FORMAT([Number of Reviewed References YoY %], "0% ▲;-0% ▼;0%")
+		displayFolder: _References Reviewed
+		lineageTag: 58d8b6a2-c6d2-4e01-b5ca-0494c37e51f1
+
+	measure 'Avg Requested to Reviewed Days PY' = ```
+			
+			CALCULATE(
+			    [Avg Requested to Reviewed Days],
+			    DATEADD(
+			        Dates[Date],
+			        -1,
+			        YEAR    
+			    )
+			)
+			```
+		formatString: 0.00
+		displayFolder: _Avg Days
+		lineageTag: 0da35058-a2fe-4e0a-844b-97f36e18daae
+
+	measure 'Avg Requested to Reviewed Days YoY' = [Avg Requested to Reviewed Days] - [Avg Requested to Reviewed Days PY]
+		formatString: 0.0
+		displayFolder: _Avg Days
+		lineageTag: ff683f3a-dbc8-475b-8afe-b725e1eb67dc
+
+	measure 'Avg Requested to Reviewed Days YoY %' = ```
+			
+			var _CY = [Avg Requested to Reviewed Days] 
+			var _PY = [Avg Requested to Reviewed Days PY]
+			RETURN DIVIDE(_CY - _PY, _PY, 0)
+			```
+		displayFolder: _Avg Days
+		lineageTag: 69228184-71cb-41c9-aea1-c1b7e35bf384
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Requested to Reviewed Days Change' = FORMAT([Avg Requested to Reviewed Days YoY], "0.0;-0.0;0.0") & " | " & FORMAT([Avg Requested to Reviewed Days YoY %], "0% ▲;-0% ▼;0%")
+		displayFolder: _Avg Days
+		lineageTag: 6cf02d05-1334-4407-96e1-f107b75fa8a1
+
+	measure 'Avg Requested to Submitted Days (Reviewed)' = ```
+			
+			CALCULATE(
+			    DIVIDE([Avg Requested To Submitted Time], (60*60*24)),
+			    USERELATIONSHIP(
+			        Reference[ref_approved_date], 
+			        Dates[Date]
+			    )
+			)
+			```
+		displayFolder: _Avg Days
+		lineageTag: f2922309-f060-40b7-9cdc-d42cdde18637
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

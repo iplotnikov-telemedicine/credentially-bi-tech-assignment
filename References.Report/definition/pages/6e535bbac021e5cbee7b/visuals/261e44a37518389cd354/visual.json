@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "261e44a37518389cd354",
   "position": {
-    "x": 1127.1337579617834,
-    "y": 50.276008492569,
-    "z": 0,
-    "height": 65.902335456475583,
-    "width": 141.31634819532908,
+    "x": 1174.0453938584778,
+    "y": 234.12550066755674,
+    "z": 10000,
+    "height": 41.0146862483311,
+    "width": 100.82777036048063,
     "tabOrder": 0
   },
   "visual": {
@@ -41,7 +41,7 @@
             "numericStart": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "3D"
                 }
               }
             }
@@ -78,7 +78,7 @@
                         },
                         "Right": {
                           "Literal": {
-                            "Value": "12D"
+                            "Value": "3D"
                           }
                         }
                       }
@@ -119,6 +119,13 @@
                   "Value": "9D"
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -145,6 +152,32 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Rolling Months'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

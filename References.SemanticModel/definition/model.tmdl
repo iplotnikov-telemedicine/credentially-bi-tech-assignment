@@ -28,6 +28,7 @@ ref table 'Job User Tag'
 ref table 'Job Position'
 ref table 'Assigned To'
 ref table 'Rolling Months'
+ref table 'Slice Options'
 
 ref role Admin
 
