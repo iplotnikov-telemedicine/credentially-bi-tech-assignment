@@ -2,44 +2,89 @@ table Reference
 	lineageTag: b885eee8-b7ee-4f2f-9ec6-ed55be4ca767
 
 	measure 'Avg Requested To Reviewed Time' = AVERAGE(Reference[requested_to_reviewed_time])
+		displayFolder: _Avg Time
 		lineageTag: 041a0674-71e9-4b34-9cad-d74563756b46
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Avg Requested To Submitted Time' = AVERAGE(Reference[requested_to_completed_time])
+		displayFolder: _Avg Time
 		lineageTag: 66928b21-7fd6-46c2-9aad-085899a5ff6b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Avg Submitted To Reviewed Time' = AVERAGE(Reference[completed_to_reviewed_time])
+		displayFolder: _Avg Time
 		lineageTag: 385f93cf-9173-4941-862c-8656e5462482
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Number of Approved References' = COUNT(Reference[ref_approved_at])
+	measure 'Number of Approved References' = ```
+			
+			CALCULATE([Number of References],
+			    Reference[ref_approval_status] = "Approved",
+			    USERELATIONSHIP(
+			        Reference[ref_approved_date], 
+			        Dates[Date]
+			    )
+			)
+			```
 		formatString: 0
+		displayFolder: _References
 		lineageTag: 1669d29c-abae-4076-8450-325285ca51c5
 
-	measure 'Number of Submitted References' = COUNT(Reference[requested_to_completed_time])
+	measure 'Number of Submitted References' =
+			
+			CALCULATE(
+			    COUNT(Reference[requested_to_completed_time]),
+			    USERELATIONSHIP(
+			        Reference[ref_completed_date],
+			        Dates[Date]
+			    )
+			)
 		formatString: # ##0
+		displayFolder: _References
 		lineageTag: 571e7b98-73cc-4750-8f12-2cb3d219067f
 
 		annotation PBI_FormatHint = {"isCustom":true}
 
-	measure 'Number of Months for Rolling Avg' = 3
+	measure 'Number of Months for Rolling Avg' = COALESCE(SELECTEDVALUE('Rolling Months'[Rolling Months]), 3)
 		formatString: 0
+		displayFolder: _Utility
 		lineageTag: 7265594d-34ca-4b81-8e8e-a893d41f95d1
 
 	measure 'Number of References' = COUNTROWS(Reference) + 0
 		formatString: # ##0
+		displayFolder: _References
 		lineageTag: fe038b7a-df2e-4144-9133-1f64b61e0628
 
 		annotation PBI_FormatHint = {"isCustom":true}
 
-	measure 'Rolling Avg Submitted to Reviewed Days' = ```
+	measure 'Rolling Avg Requested to Submitted Days' = ```
 			
 			CALCULATE (
-			    AVERAGEX (Reference, Reference[completed_to_reviewed_time]),
+			    [Avg Requested to Submitted Days],
+			    DATESINPERIOD (
+			        Dates[Date],
+			        LASTDATE (Dates[Date]),
+			        -[Number of Months for Rolling Avg],
+			        MONTH
+			    ),
+			    USERELATIONSHIP(
+			        Reference[ref_completed_date], 
+			        Dates[Date]
+			    )
+			)
+			```
+		displayFolder: _Rolling Avg Days
+		lineageTag: 7782a940-1041-4e40-aec4-6602b6abdc92
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rolling Avg Requested to Reviewed Days' = ```
+			
+			CALCULATE (
+			    [Avg Requested to Reviewed Days],
 			    DATESINPERIOD (
 			        Dates[Date],
 			        LASTDATE (Dates[Date]),
@@ -50,39 +95,85 @@ table Reference
 			        Reference[ref_approved_date], 
 			        Dates[Date]
 			    )
-			) / (60*60*24)
+			)
 			```
-		lineageTag: 7bc574af-90e6-4521-8da0-d2d37e48ebbe
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Rolling Avg Requested to Submitted Days' =
-			
-			CALCULATE (
-			    AVERAGEX (Reference, Reference[requested_to_completed_time]),
-			    DATESINPERIOD (
-			        Dates[Date],
-			        LASTDATE (Dates[Date]),
-			        -[Number of Months for Rolling Avg],
-			        MONTH
-			    )
-			) / (60*60*24)
-		lineageTag: 7782a940-1041-4e40-aec4-6602b6abdc92
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Rolling Avg Requested to Reviewed Days' =
-			
-			CALCULATE (
-			    AVERAGEX (Reference, Reference[requested_to_reviewed_time]),
-			    DATESINPERIOD (
-			        Dates[Date],
-			        LASTDATE (Dates[Date]),
-			        -[Number of Months for Rolling Avg],
-			        MONTH
-			    )
-			) / (60*60*24)
+		displayFolder: _Rolling Avg Days
 		lineageTag: 05c43ece-3a31-45a5-b65d-28685ca8eab2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Requested to Reviewed Days' = DIVIDE([Avg Requested To Reviewed Time], (60*60*24))
+		displayFolder: _Avg Days
+		lineageTag: 0b1c66ca-7c42-4173-ac1b-33d9d5f49b32
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Requested to Submitted Days' = DIVIDE([Avg Requested To Submitted Time], (60*60*24))
+		displayFolder: _Avg Days
+		lineageTag: 5a3f2847-3c4a-4544-8c20-ce3dc83b2edc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Submitted to Reviewed Days' = DIVIDE([Avg Submitted To Reviewed Time], (60*60*24))
+		displayFolder: _Avg Days
+		lineageTag: ef0454e8-fda6-420a-b489-99a7f8ca969c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Number of Declined References' = ```
+			
+			CALCULATE([Number of References],
+			    Reference[ref_approval_status] = "Declined",
+			    USERELATIONSHIP(
+			        Reference[ref_approved_date], 
+			        Dates[Date]
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: _References
+		lineageTag: b09ce729-9450-46c9-b8b4-30e300fb6ed5
+
+	measure 'Number of Reviewed References' = [Number of Approved References] + [Number of Declined References]
+		formatString: 0
+		displayFolder: _References
+		lineageTag: e575a2fc-989c-417f-8ebb-1f2cdd7a0084
+
+	measure 'Approval Rate' = DIVIDE([Number of Approved References], [Number of References])
+		formatString: 0%;-0%;0%
+		displayFolder: _References
+		lineageTag: 28c48381-621b-443f-997e-fa8941e5f8d3
+
+	measure 'Been Reviewed %' = DIVIDE([Number of Reviewed References], [Number of References])
+		displayFolder: _References
+		lineageTag: 81beebc8-283f-4158-96dd-63eae68f9550
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Been Submitted %' = DIVIDE([Number of Submitted References], [Number of References])
+		displayFolder: _References
+		lineageTag: d362ea6f-5537-4c8b-bdf0-e7db7eb936a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rolling Avg Submitted to Reviewed Days' = ```
+			
+			CALCULATE (
+			    [Avg Submitted to Reviewed Days],
+			    DATESINPERIOD (
+			        Dates[Date],
+			        LASTDATE (Dates[Date]),
+			        -[Number of Months for Rolling Avg],
+			        MONTH
+			    ),
+			    USERELATIONSHIP(
+			        Reference[ref_approved_date], 
+			        Dates[Date]
+			    )
+			)
+			```
+		displayFolder: _Rolling Avg Days
+		lineageTag: 0efb6bc3-ebd4-4426-a7dc-6946c495c498
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
