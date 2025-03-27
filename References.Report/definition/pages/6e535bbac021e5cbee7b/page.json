@@ -14,7 +14,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "job_position_id"
@@ -26,7 +26,7 @@
           "From": [
             {
               "Name": "r",
-              "Entity": "ref_references",
+              "Entity": "Reference",
               "Type": 0
             }
           ],
@@ -70,7 +70,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_job_positions"
+                "Entity": "Job Position"
               }
             },
             "Property": "role"
@@ -102,7 +102,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_user_tags"
+                "Entity": "Job User Tag"
               }
             },
             "Property": "tag"
@@ -134,7 +134,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_assigned_to"
+                "Entity": "Job Assigned To Bridge"
               }
             },
             "Property": "assigned_to"
@@ -166,7 +166,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_job_positions"
+                "Entity": "Job Position"
               }
             },
             "Property": "job_position_status"
@@ -183,7 +183,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_job_positions"
+                "Entity": "Job Position"
               }
             },
             "Property": "signed_off"
@@ -200,7 +200,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "is_mandatory"
@@ -217,7 +217,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "ref_form_name"
@@ -234,7 +234,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "ref_package_name"

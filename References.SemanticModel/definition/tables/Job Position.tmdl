@@ -1,4 +1,4 @@
-table ref_job_positions
+table 'Job Position'
 	lineageTag: c6ad059b-91b3-4e83-b2a0-1919aec754db
 
 	column job_position_id
@@ -44,14 +44,13 @@ table ref_job_positions
 
 		annotation SummarizationSetBy = Automatic
 
-	partition ref_job_positions = m
+	partition 'Job Position' = m
 		mode: import
 		queryGroup: References
 		source =
 				let
-				    Source = Web.BrowserContents("https://drive.google.com/file/d/1o8G-7nd14lUdOrCzc2AU9sO_dXvDz2lp/view?usp=sharing"),
-				    #"Extracted Table From Html" = Html.Table(Source, {{"Column1", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(1)"}, {"Column2", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(2)"}, {"Column3", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(3)"}, {"Column4", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(4)"}, {"Column5", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(5)"}}, [RowSelector="TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR"]),
-				    #"Promoted Headers" = Table.PromoteHeaders(#"Extracted Table From Html", [PromoteAllScalars=true]),
+				    Source = Csv.Document(Web.Contents("https://drive.usercontent.google.com/u/0/uc?id=1o8G-7nd14lUdOrCzc2AU9sO_dXvDz2lp&export=download"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"job_position_id", Int64.Type}, {"role", type text}, {"job_position_status", type text}, {"signed_off", type logical}, {"organisation_id", Int64.Type}})
 				in
 				    #"Changed Type"

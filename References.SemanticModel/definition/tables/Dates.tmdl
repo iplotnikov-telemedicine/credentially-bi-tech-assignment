@@ -50,7 +50,7 @@ table Dates
 
 	partition Dates = calculated
 		mode: import
-		source = CALENDAR(DATE(YEAR(MIN(ref_references[ref_requested_date])), 1, 1), TODAY())
+		source = CALENDAR(DATE(YEAR(MIN(Reference[ref_requested_date])), 1, 1), TODAY())
 
 	annotation PBI_Id = 2af5f87c75274bb98f7a4a136148fa4b
 

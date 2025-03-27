@@ -1,33 +1,32 @@
 relationship 40ac3e4c-43dd-26aa-fc62-ce783723e050
-	crossFilteringBehavior: bothDirections
-	fromColumn: ref_references.job_position_id
-	toColumn: ref_job_positions.job_position_id
+	fromColumn: Reference.job_position_id
+	toColumn: 'Job Position'.job_position_id
 
 relationship 418bb40d-e565-d637-2f2e-43047feb53db
 	crossFilteringBehavior: bothDirections
-	fromColumn: ref_user_tags.job_position_id
-	toColumn: ref_job_positions.job_position_id
+	fromColumn: 'Job User Tag'.job_position_id
+	toColumn: 'Job Position'.job_position_id
 
 relationship 178b8997-a7ef-ac36-1f76-936226124a20
-	isActive: false
 	crossFilteringBehavior: bothDirections
-	fromColumn: ref_assigned_to.job_position_id
-	toColumn: ref_job_positions.job_position_id
+	fromColumn: 'Job Assigned To Bridge'.job_position_id
+	toColumn: 'Job Position'.job_position_id
 
 relationship aa1e50a2-3a9c-42a7-96ea-df8a15ff6f5e
-	crossFilteringBehavior: bothDirections
-	fromColumn: ref_references.ref_requested_date
+	fromColumn: Reference.ref_requested_date
 	toColumn: Dates.Date
 
 relationship 5cb3d704-899f-ad37-4056-cda07c338d2a
 	isActive: false
-	crossFilteringBehavior: bothDirections
-	fromColumn: ref_references.ref_completed_date
+	fromColumn: Reference.ref_completed_date
 	toColumn: Dates.Date
 
 relationship 77609265-7c0d-778d-f4fa-6b4b1ec4f6a5
 	isActive: false
-	crossFilteringBehavior: bothDirections
-	fromColumn: ref_references.ref_approved_date
+	fromColumn: Reference.ref_approved_date
 	toColumn: Dates.Date
+
+relationship AutoDetected_7160199f-1e61-4e46-b13b-5fcfa142b15d
+	fromColumn: 'Job Assigned To Bridge'.assigned_to
+	toColumn: 'Assigned To'.assigned_to
 

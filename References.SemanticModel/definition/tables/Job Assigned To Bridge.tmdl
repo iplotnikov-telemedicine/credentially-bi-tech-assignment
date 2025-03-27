@@ -1,4 +1,4 @@
-table ref_assigned_to
+table 'Job Assigned To Bridge'
 	lineageTag: a23d70a0-906b-45e9-b6eb-f2e54271fa06
 
 	column job_position_id
@@ -18,14 +18,13 @@ table ref_assigned_to
 
 		annotation SummarizationSetBy = Automatic
 
-	partition ref_assigned_to = m
+	partition 'Job Assigned To Bridge' = m
 		mode: import
 		queryGroup: References
 		source =
 				let
-				    Source = Web.BrowserContents("https://drive.google.com/file/d/1baDLWADEEDefnFr7h3pz-hWds_3i82KX/view?usp=sharing"),
-				    #"Extracted Table From Html" = Html.Table(Source, {{"Column1", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(1)"}, {"Column2", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(2)"}}, [RowSelector="TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR"]),
-				    #"Promoted Headers" = Table.PromoteHeaders(#"Extracted Table From Html", [PromoteAllScalars=true]),
+				    Source = Csv.Document(Web.Contents("https://drive.usercontent.google.com/u/0/uc?id=1baDLWADEEDefnFr7h3pz-hWds_3i82KX&export=download"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Source", [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"job_position_id", Int64.Type}, {"assigned_to", type text}})
 				in
 				    #"Changed Type"
