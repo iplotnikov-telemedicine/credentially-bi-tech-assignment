@@ -1,4 +1,4 @@
-table ref_user_tags
+table 'Job User Tag'
 	lineageTag: a9ac1f29-0185-4949-9b4f-83e4f58c3585
 
 	column job_position_id
@@ -18,14 +18,13 @@ table ref_user_tags
 
 		annotation SummarizationSetBy = Automatic
 
-	partition ref_user_tags = m
+	partition 'Job User Tag' = m
 		mode: import
 		queryGroup: References
 		source =
 				let
-				    Source = Web.BrowserContents("https://drive.google.com/file/d/1lToaUKh6PADJ539r_Aj0UfHL4dMx16S9/view?usp=sharing"),
-				    #"Extracted Table From Html" = Html.Table(Source, {{"Column1", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(1)"}, {"Column2", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(2)"}}, [RowSelector="TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR"]),
-				    #"Promoted Headers" = Table.PromoteHeaders(#"Extracted Table From Html", [PromoteAllScalars=true]),
+				    Source = Csv.Document(Web.Contents("https://drive.usercontent.google.com/u/0/uc?id=1lToaUKh6PADJ539r_Aj0UfHL4dMx16S9&export=download"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"job_position_id", Int64.Type}, {"tag", type text}})
 				in
 				    #"Changed Type"

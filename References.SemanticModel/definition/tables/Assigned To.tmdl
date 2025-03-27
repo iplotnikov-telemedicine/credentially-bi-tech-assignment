@@ -1,0 +1,28 @@
+table 'Assigned To'
+	lineageTag: bced7b2b-7a8d-4bfd-8edb-ab0a0974847e
+
+	column assigned_to
+		dataType: string
+		lineageTag: f4c0359d-7a6b-4609-bc2f-666008926ded
+		summarizeBy: none
+		sourceColumn: assigned_to
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Assigned To' = m
+		mode: import
+		queryGroup: References
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://drive.usercontent.google.com/u/0/uc?id=1baDLWADEEDefnFr7h3pz-hWds_3i82KX&export=download"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Source", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"job_position_id", Int64.Type}, {"assigned_to", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"assigned_to"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,52 @@
+table 'Slice Options'
+	lineageTag: 9119cb5b-23c2-423c-b591-ee690b81615c
+
+	column 'Slice Options'
+		lineageTag: b2a0fc42-b660-46fe-954b-b578bf7c9d5f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Slice Options Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Slice Options Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slice Options Fields'
+		isHidden
+		lineageTag: fb306a8a-d9dd-4acc-932e-83b5084f240c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Slice Options Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slice Options Order'
+		isHidden
+		formatString: 0
+		lineageTag: 2eb677af-52a0-4ffe-b206-5a4df463789a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Slice Options' = calculated
+		mode: import
+		source =
+				{
+				    ("Assigned To", NAMEOF('Assigned To'[assigned_to]), 0),
+				    ("Role", NAMEOF('Job Position'[role]), 1),
+				    ("Form Name", NAMEOF('Reference'[ref_form_name]), 3),
+				    ("Status", NAMEOF('Reference'[ref_status]), 4),
+				    ("Is Mandatory", NAMEOF('Reference'[is_mandatory]), 5),
+				    ("Tag", NAMEOF('Job User Tag'[tag]), 6)
+				}
+
+	annotation PBI_Id = ea1402ecf1fd471fb3ad84b753a55ba3
+

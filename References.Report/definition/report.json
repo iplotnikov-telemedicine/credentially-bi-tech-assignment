@@ -7,8 +7,8 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Credentially_theme4764880281999655.json",
-      "reportVersionAtImport": "5.60",
+      "name": "Credentially_theme2803358483981364.json",
+      "reportVersionAtImport": "5.61",
       "type": "RegisteredResources"
     }
   },
@@ -33,7 +33,7 @@
           "expanded": {
             "expr": {
               "Literal": {
-                "Value": "false"
+                "Value": "true"
               }
             }
           }
@@ -50,8 +50,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Credentially_theme4764880281999655.json",
-          "path": "Credentially_theme4764880281999655.json",
+          "name": "Credentially_theme2803358483981364.json",
+          "path": "Credentially_theme2803358483981364.json",
           "type": "CustomTheme"
         }
       ]

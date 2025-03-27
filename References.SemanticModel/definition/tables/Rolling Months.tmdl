@@ -1,0 +1,26 @@
+table 'Rolling Months'
+	lineageTag: 48aecf27-56bf-48bd-985c-37a2ba8302af
+
+	measure 'Rolling Months Value' = SELECTEDVALUE('Rolling Months'[Rolling Months], 1)
+		formatString: 0
+		lineageTag: 23f7607c-f7f9-4005-8911-53f4c57e1978
+
+	column 'Rolling Months'
+		formatString: 0
+		lineageTag: 29f45fdc-46bf-40f8-b010-91a8a1344973
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Rolling Months' = calculated
+		mode: import
+		source = GENERATESERIES(1, 12, 1)
+
+	annotation PBI_Id = 91f3f39575924bdabbaf66970eec5126
+

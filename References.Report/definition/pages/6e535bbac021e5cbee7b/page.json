@@ -14,7 +14,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "job_position_id"
@@ -26,7 +26,7 @@
           "From": [
             {
               "Name": "r",
-              "Entity": "ref_references",
+              "Entity": "Reference",
               "Type": 0
             }
           ],
@@ -70,7 +70,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_job_positions"
+                "Entity": "Job Position"
               }
             },
             "Property": "role"
@@ -102,7 +102,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_user_tags"
+                "Entity": "Job User Tag"
               }
             },
             "Property": "tag"
@@ -134,7 +134,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_assigned_to"
+                "Entity": "Job Assigned To Bridge"
               }
             },
             "Property": "assigned_to"
@@ -166,7 +166,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_job_positions"
+                "Entity": "Job Position"
               }
             },
             "Property": "job_position_status"
@@ -183,7 +183,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_job_positions"
+                "Entity": "Job Position"
               }
             },
             "Property": "signed_off"
@@ -200,7 +200,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "is_mandatory"
@@ -217,7 +217,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "ref_form_name"
@@ -234,7 +234,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_references"
+                "Entity": "Reference"
               }
             },
             "Property": "ref_package_name"
@@ -244,17 +244,34 @@
         "howCreated": "User"
       },
       {
-        "name": "97afae6e985199feceb2",
-        "displayName": "Group",
+        "name": "305c9d38e17ea02d5035",
+        "displayName": "Organisation ID",
         "ordinal": 9,
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "ref_groups"
+                "Entity": "Job Position"
               }
             },
-            "Property": "group_name"
+            "Property": "organisation_id"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "c513a3b28ca5719c260e",
+        "displayName": "Job Position Status",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Job Position"
+              }
+            },
+            "Property": "job_position_status"
           }
         },
         "type": "Categorical",
@@ -301,5 +318,272 @@
         }
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "175f83300a31c53adad4",
+      "target": "08b230525400490783b4",
+      "type": "NoFilter"
+    },
+    {
+      "source": "175f83300a31c53adad4",
+      "target": "a40da62237cae5194ee7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "175f83300a31c53adad4",
+      "target": "76b52de4053a9b2ed405",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "08b230525400490783b4",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "18797943d3420e105116",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "a40da62237cae5194ee7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "ffca23e300adb0c751e3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "9e78f292051a640d0a07",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "315eac494bed002e9e79",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "1e6d331a085198aba595",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "c8e177071b007099304d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "dcd30e378026ed8d041d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "175f83300a31c53adad4",
+      "target": "95bcc9b03d95d0b5a93e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "8925435cace152e10c57",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "4e1eb3e0e0d8eeac1c0d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "61a3f2c00b6351ba271e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "1058ffb2ce18b01818a7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "76b52de4053a9b2ed405",
+      "target": "95bcc9b03d95d0b5a93e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "dcd30e378026ed8d041d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "95bcc9b03d95d0b5a93e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "76b52de4053a9b2ed405",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "18797943d3420e105116",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "a40da62237cae5194ee7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "ffca23e300adb0c751e3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "9e78f292051a640d0a07",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "c8e177071b007099304d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "315eac494bed002e9e79",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "1e6d331a085198aba595",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "8925435cace152e10c57",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "4e1eb3e0e0d8eeac1c0d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "1058ffb2ce18b01818a7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "08b230525400490783b4",
+      "target": "61a3f2c00b6351ba271e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "08b230525400490783b4",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "18797943d3420e105116",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "7f0f977b729581e6830e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "76b52de4053a9b2ed405",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "ffca23e300adb0c751e3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "9e78f292051a640d0a07",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "c8e177071b007099304d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "1e6d331a085198aba595",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "315eac494bed002e9e79",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "61a3f2c00b6351ba271e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "1058ffb2ce18b01818a7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "8925435cace152e10c57",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "4e1eb3e0e0d8eeac1c0d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "dcd30e378026ed8d041d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a40da62237cae5194ee7",
+      "target": "95bcc9b03d95d0b5a93e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "ffca23e300adb0c751e3",
+      "target": "a40da62237cae5194ee7",
+      "type": "NoFilter"
+    },
+    {
+      "source": "ffca23e300adb0c751e3",
+      "target": "08b230525400490783b4",
+      "type": "NoFilter"
+    },
+    {
+      "source": "ffca23e300adb0c751e3",
+      "target": "18797943d3420e105116",
+      "type": "NoFilter"
+    },
+    {
+      "source": "ffca23e300adb0c751e3",
+      "target": "7f0f977b729581e6830e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "ffca23e300adb0c751e3",
+      "target": "76b52de4053a9b2ed405",
+      "type": "NoFilter"
+    },
+    {
+      "source": "175f83300a31c53adad4",
+      "target": "b6b17ac365e559562bb8",
+      "type": "DataFilter"
+    }
+  ]
 }

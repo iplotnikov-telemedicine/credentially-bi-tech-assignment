@@ -15,17 +15,20 @@ queryGroup References
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBIDesktopVersion = 2.140.1078.0 (25.02)+2cce24fb16e8b71ba835921d23e7ffc1fab909df
+annotation PBIDesktopVersion = 2.140.1577.0 (25.02)+00af0910c5ca19a229c472b0dfc17a2c488f6b0a
 
-annotation PBI_QueryOrder = ["ref_references","ref_assigned_to","ref_user_tags","ref_job_positions"]
+annotation PBI_QueryOrder = ["Reference","Job Assigned To Bridge","Job User Tag","Job Position","Assigned To"]
 
 annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop","TMDL-Extension"]
 
 ref table Dates
-ref table ref_references
-ref table ref_assigned_to
-ref table ref_user_tags
-ref table ref_job_positions
+ref table Reference
+ref table 'Job Assigned To Bridge'
+ref table 'Job User Tag'
+ref table 'Job Position'
+ref table 'Assigned To'
+ref table 'Rolling Months'
+ref table 'Slice Options'
 
 ref role Admin
 

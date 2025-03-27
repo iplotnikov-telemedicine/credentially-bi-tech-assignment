@@ -2,8 +2,231 @@ cultureInfo en-US
 
 	linguisticMetadata =
 			{
-			  "Version": "1.0.0",
-			  "Language": "en-US"
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "reference.number_of_references": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of References"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Current Year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "References Requested": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Requested": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "reference.number_of_references_py": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of References PY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "reference.number_of_references_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of References Change"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "reference.number_of_submitted_references_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of Submitted References Change"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "reference.number_of_submitted_references_py": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of Submitted References PY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "reference.number_of_reviewed_references_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of Reviewed References Change"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "reference.number_of_reviewed_references_py": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of Reviewed References PY"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "reference.avg_requested_to_reviewed_days_change": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Avg Requested to Reviewed Days Change"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Change": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "reference.avg_requested_to_reviewed_days_py": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Avg Requested to Reviewed Days PY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Previous Year": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "reference.avg_requested_to_submitted_days_reviewed": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Avg Requested to Submitted Days (Reviewed)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Days to Submission": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "reference.avg_submitted_to_reviewed_days": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Avg Submitted to Reviewed Days"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Days to Review": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "assigned_to.assigned_to": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Assigned To",
+			          "ConceptualProperty": "assigned_to"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Assigned To": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "reference.number_of_reviewed_references": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Reference",
+			          "ConceptualProperty": "Number of Reviewed References"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Reviewed": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
 			}
 		contentType: json
 
