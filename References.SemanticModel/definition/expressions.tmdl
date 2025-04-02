@@ -1,8 +1,0 @@
-expression host = "localhost:5433" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = "Text", List = {"localhost:5433"}, DefaultValue = "localhost:5433"]
-	lineageTag: 8cc831a2-6014-4a1d-987b-ef2e61f663ca
-	queryGroup: Parameters
-
-	annotation PBI_ResultType = Text
-
-	annotation PBI_NavigationStepName = Navigation
-

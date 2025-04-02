@@ -92,22 +92,23 @@ table ref_references
 		summarizeBy: none
 		sourceColumn: completed_to_reviewed_days
 
-		changedProperty = DataType
-
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 		annotation SummarizationSetBy = User
 
 	column completed_to_reviewed_time
-		dataType: string
+		dataType: double
 		lineageTag: 0e6cfed2-2615-438d-af84-6853ec889c5f
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: completed_to_reviewed_time
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column cr_created_at
-		dataType: string
+		dataType: dateTime
+		formatString: General Date
 		lineageTag: fd8ae5a7-4295-4dd8-9852-84ddfb7abde8
 		summarizeBy: none
 		sourceColumn: cr_created_at
@@ -124,7 +125,8 @@ table ref_references
 		annotation SummarizationSetBy = Automatic
 
 	column marked_compliant_at
-		dataType: string
+		dataType: dateTime
+		formatString: General Date
 		lineageTag: a3f7d584-2d3c-4e2a-916e-34adf2da4340
 		summarizeBy: none
 		sourceColumn: marked_compliant_at
@@ -140,7 +142,8 @@ table ref_references
 		annotation SummarizationSetBy = Automatic
 
 	column ref_approved_at
-		dataType: string
+		dataType: dateTime
+		formatString: General Date
 		lineageTag: 7ff57eb8-6ca7-45bc-8b04-619c291f01da
 		summarizeBy: none
 		sourceColumn: ref_approved_at
@@ -148,15 +151,19 @@ table ref_references
 		annotation SummarizationSetBy = Automatic
 
 	column ref_approved_date
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: 76e1ce4e-a2eb-41ef-9759-f80f2c52078d
 		summarizeBy: none
 		sourceColumn: ref_approved_date
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column ref_completed_at
-		dataType: string
+		dataType: dateTime
+		formatString: General Date
 		lineageTag: d8c991f5-3ad3-49b5-bc02-afffa731d9c2
 		summarizeBy: none
 		sourceColumn: ref_completed_at
@@ -164,15 +171,19 @@ table ref_references
 		annotation SummarizationSetBy = Automatic
 
 	column ref_completed_date
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: 3416eb6a-af72-4a4e-bbca-e8c90d25fd42
 		summarizeBy: none
 		sourceColumn: ref_completed_date
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column ref_requested_at
-		dataType: string
+		dataType: dateTime
+		formatString: General Date
 		lineageTag: 5a78b2db-c16f-4097-9d11-45e497daa335
 		summarizeBy: none
 		sourceColumn: ref_requested_at
@@ -180,12 +191,15 @@ table ref_references
 		annotation SummarizationSetBy = Automatic
 
 	column ref_requested_date
-		dataType: string
+		dataType: dateTime
+		formatString: Long Date
 		lineageTag: f94f6bd6-c89f-4c1e-ab96-c1ca3e7bc6e8
 		summarizeBy: none
 		sourceColumn: ref_requested_date
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column ref_status
 		dataType: string
@@ -201,55 +215,39 @@ table ref_references
 		summarizeBy: none
 		sourceColumn: requested_to_completed_days
 
-		changedProperty = DataType
-
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 		annotation SummarizationSetBy = User
 
 	column requested_to_completed_time
-		dataType: string
+		dataType: double
 		lineageTag: 483615f0-6590-491f-ac76-7bdf4057728f
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: requested_to_completed_time
 
 		annotation SummarizationSetBy = Automatic
 
-	column requested_to_compliant_days
-		dataType: int64
-		lineageTag: 623f1ccc-94f4-4eb8-95d4-e439de0d3fa0
-		summarizeBy: none
-		sourceColumn: requested_to_compliant_days
-
-		changedProperty = DataType
-
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-		annotation SummarizationSetBy = User
-
 	column requested_to_compliant_time
-		dataType: string
+		dataType: double
 		lineageTag: bcc01aa2-fa25-47b3-b88e-c408aef4b799
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: requested_to_compliant_time
 
 		annotation SummarizationSetBy = Automatic
 
-	column requested_to_reviewed_days
-		dataType: string
-		lineageTag: 2c0f8d28-8c3e-46d7-a905-1d58dbddf176
-		summarizeBy: none
-		sourceColumn: requested_to_reviewed_days
-
-		annotation SummarizationSetBy = Automatic
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column requested_to_reviewed_time
-		dataType: string
+		dataType: double
 		lineageTag: 3b27de7d-a880-4f41-bc8b-ad7f7f23dd2c
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: requested_to_reviewed_time
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column is_mandatory
 		dataType: boolean
@@ -260,15 +258,31 @@ table ref_references
 
 		annotation SummarizationSetBy = Automatic
 
+	column ref_package_name
+		dataType: string
+		lineageTag: f2df5504-f1f0-4fe6-a5fe-b5767d3b808a
+		summarizeBy: none
+		sourceColumn: ref_package_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ref_form_name
+		dataType: string
+		lineageTag: 650694b2-e78a-4195-8b90-28f49af2635b
+		summarizeBy: none
+		sourceColumn: ref_form_name
+
+		annotation SummarizationSetBy = Automatic
+
 	partition ref_references = m
 		mode: import
 		queryGroup: References
 		source =
 				let
-				    Source = Web.BrowserContents("https://drive.google.com/file/d/1WVOiw0J6MZrx3Dztz10Yq-0j2c0_PWs1/view?usp=sharing"),
+				    Source = Web.BrowserContents("https://drive.google.com/file/d/1mQj30vUWHMDdVPJVJk4qLh9jD3BYCvSM/view?usp=sharing"),
 				    #"Extracted Table From Html" = Html.Table(Source, {{"Column1", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(1)"}, {"Column2", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(2)"}, {"Column3", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(3)"}, {"Column4", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(4)"}, {"Column5", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(5)"}, {"Column6", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(6)"}, {"Column7", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(7)"}, {"Column8", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(8)"}, {"Column9", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(9)"}, {"Column10", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(10)"}, {"Column11", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(11)"}, {"Column12", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(12)"}, {"Column13", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(13)"}, {"Column14", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(14)"}, {"Column15", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(15)"}, {"Column16", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(16)"}, {"Column17", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(17)"}, {"Column18", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(18)"}, {"Column19", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(19)"}, {"Column20", "TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR > :nth-child(20)"}}, [RowSelector="TABLE.ndfHFb-c4YZDc-hDEnYe-Df1ZY-bN97Pc > * > TR"]),
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Extracted Table From Html", [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"completed_to_reviewed_days", type text}, {"completed_to_reviewed_time", type text}, {"cr_created_at", type text}, {"job_position_id", Int64.Type}, {"marked_compliant_at", type text}, {"ref_approval_status", type text}, {"ref_approved_at", type text}, {"ref_approved_date", type text}, {"ref_completed_at", type text}, {"ref_completed_date", type text}, {"ref_requested_at", type text}, {"ref_requested_date", type text}, {"ref_status", type text}, {"requested_to_completed_days", type text}, {"requested_to_completed_time", type text}, {"requested_to_compliant_days", type text}, {"requested_to_compliant_time", type text}, {"requested_to_reviewed_days", type text}, {"requested_to_reviewed_time", type text}, {"is_mandatory", type logical}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"job_position_id", Int64.Type}, {"ref_requested_at", type datetime}, {"ref_requested_date", type date}, {"ref_completed_at", type datetime}, {"ref_completed_date", type date}, {"ref_approved_at", type datetime}, {"ref_approved_date", type date}, {"is_mandatory", type logical}, {"ref_package_name", type text}, {"ref_form_name", type text}, {"cr_created_at", type datetime}, {"marked_compliant_at", type datetime}, {"requested_to_completed_time", type number}, {"completed_to_reviewed_time", type number}, {"requested_to_reviewed_time", type number}, {"requested_to_compliant_time", type number}, {"ref_status", type text}, {"ref_approval_status", type text}, {"requested_to_completed_days", Int64.Type}, {"completed_to_reviewed_days", Int64.Type}})
 				in
 				    #"Changed Type"
 
