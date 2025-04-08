@@ -6,6 +6,7 @@ In the repository, you will find a pre-prepared semantic model along with source
 
 ### Task  
 
-1. **Load and analyze the data** that will be used to build this report. What issues do you see with the data, and how can they be addressed?  
-2. **Build a simple dashboard** based on the prepared semantic model and some calculations that may be useful to you. Highlight the key metrics that you would emphasize for the client as the most significant in the context of references. Feel free to modify the semantic model/calculations for your purposes.  
-4. **Submit a pull request** with your changes, including your dashboard.  
+1. **Fork the provided repository to your own account.** Please complete the assignment within this forked repository.
+2. **Load and analyze the data** that will be used to build this report. What issues do you see with the data, and how can they be addressed?  
+3. **Build a simple dashboard** based on the prepared semantic model and some calculations that may be useful to you. Highlight the key metrics that you would emphasize for the client as the most significant in the context of references. Feel free to modify the semantic model/calculations for your purposes.  
+4. **When you are finished, please send us the link to your forked repository** with the changes you made, including your dashboard. If you have any questions, please don't hesitate to ask.
