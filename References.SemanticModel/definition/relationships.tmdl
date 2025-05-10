@@ -9,7 +9,6 @@ relationship 418bb40d-e565-d637-2f2e-43047feb53db
 	toColumn: ref_job_positions.job_position_id
 
 relationship 178b8997-a7ef-ac36-1f76-936226124a20
-	isActive: false
 	crossFilteringBehavior: bothDirections
 	fromColumn: ref_assigned_to.job_position_id
 	toColumn: ref_job_positions.job_position_id

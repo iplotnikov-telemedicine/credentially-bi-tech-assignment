@@ -1,0 +1,295 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.7.0/schema.json",
+  "name": "cb5db8aad2e11a738ed5",
+  "position": {
+    "x": 9.6372347707049961,
+    "y": 0,
+    "z": 0,
+    "height": 720.164271047228,
+    "width": 1270.3627652292951,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "ref_approval_status"
+                }
+              },
+              "queryRef": "ref_references.ref_approval_status",
+              "nativeQueryRef": "ref_approval_status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "ref_approved_at"
+                }
+              },
+              "queryRef": "ref_references.ref_approved_at",
+              "nativeQueryRef": "ref_approved_at"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "ref_requested_at"
+                }
+              },
+              "queryRef": "ref_references.ref_requested_at",
+              "nativeQueryRef": "ref_requested_at"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "ref_status"
+                }
+              },
+              "queryRef": "ref_references.ref_status",
+              "nativeQueryRef": "ref_status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "ref_completed_date"
+                }
+              },
+              "queryRef": "ref_references.ref_completed_date",
+              "nativeQueryRef": "ref_completed_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "ref_form_name"
+                }
+              },
+              "queryRef": "ref_references.ref_form_name",
+              "nativeQueryRef": "ref_form_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_job_positions"
+                    }
+                  },
+                  "Property": "role"
+                }
+              },
+              "queryRef": "ref_job_positions.role",
+              "nativeQueryRef": "role"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_job_positions"
+                    }
+                  },
+                  "Property": "job_position_status"
+                }
+              },
+              "queryRef": "ref_job_positions.job_position_status",
+              "nativeQueryRef": "job_position_status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "completed_to_reviewed_days"
+                }
+              },
+              "queryRef": "ref_references.completed_to_reviewed_days",
+              "nativeQueryRef": "completed_to_reviewed_days"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "requested_to_reviewed_days"
+                }
+              },
+              "queryRef": "Sum(ref_references.requested_to_reviewed_days)",
+              "nativeQueryRef": "requested_to_reviewed_days"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "requested_to_compliant_days"
+                }
+              },
+              "queryRef": "Sum(ref_references.requested_to_compliant_days)",
+              "nativeQueryRef": "requested_to_compliant_days"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ref_references"
+                    }
+                  },
+                  "Property": "requested_to_completed_days"
+                }
+              },
+              "queryRef": "ref_references.requested_to_completed_days",
+              "nativeQueryRef": "requested_to_completed_days"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#010531'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            },
+            "fontColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#010531'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#010531'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

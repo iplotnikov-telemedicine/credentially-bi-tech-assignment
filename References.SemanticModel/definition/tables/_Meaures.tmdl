@@ -1,0 +1,60 @@
+table _Meaures
+	lineageTag: 484956af-78b5-4479-9c3d-86f86c8ce74f
+
+	measure 'Total Submitted' = CALCULATE(COUNTROWS(ref_references), ref_references[ref_approval_status] = "Submitted")
+		formatString: 0
+		lineageTag: e9a4f1ea-11b8-4cf4-857e-65fb3f3cbd90
+
+	measure 'Total Requested' = CALCULATE(COUNTROWS(ref_references), ref_references[ref_approval_status] = "Requested")
+		formatString: 0
+		lineageTag: 6e8054ee-5cf3-4b34-90e0-e27543b13a4b
+
+	measure 'Total Approved' = CALCULATE(COUNTROWS(ref_references), ref_references[ref_approval_status] = "Approved")
+		formatString: 0
+		lineageTag: 1e9eff80-b6da-4b67-9e04-0f52fc15e323
+
+	measure 'Total Declined' = CALCULATE(COUNTROWS(ref_references), ref_references[ref_approval_status] = "Declined")
+		formatString: 0
+		lineageTag: d74fa670-40c9-4775-aa18-0516437c21cd
+
+	measure 'Total References' = COUNTROWS(ref_references)
+		formatString: 0
+		lineageTag: d74be63f-164f-4951-ba3c-813bbcc75925
+
+	measure 'Sent %' = CONCATENATE(ROUND(DIVIDE(CALCULATE(COUNTROWS(ref_references), ref_references[ref_status] = "Sent"), [Total References]) * 100,2), "%")
+		lineageTag: 416fd28e-7298-41ea-911b-5893254fb7f2
+
+	measure 'Awaiting Approval %' = CONCATENATE(ROUND(DIVIDE(CALCULATE(COUNTROWS(ref_references), ref_references[ref_status] = "awaiting_approval"), [Total References]) * 100,2), "%")
+		lineageTag: fdaad3e7-e059-4488-b303-c83cd72a61d0
+
+	measure 'Email Bounced %' = CONCATENATE(ROUND(DIVIDE(CALCULATE(COUNTROWS(ref_references), ref_references[ref_status] = "email_bounced"), [Total References]) * 100,2), "%")
+		lineageTag: 03585228-9855-4cf2-9d67-b90ea03323f8
+
+	measure 'Opened %' = CONCATENATE(ROUND(DIVIDE(CALCULATE(COUNTROWS(ref_references), ref_references[ref_status] = "opened"), [Total References]) * 100,2), "%")
+		lineageTag: 007946d7-c131-4ff5-b4c9-91bdf82609a4
+
+	measure 'Approved %' = CONCATENATE(ROUND(DIVIDE(CALCULATE(COUNTROWS(ref_references), ref_references[ref_status] = "approved"), [Total References]) * 100,2), "%")
+		lineageTag: 2a4acb2c-1c0d-46cb-84b3-aa4debe0472b
+
+	measure 'Denied %' = CONCATENATE(ROUND(DIVIDE(CALCULATE(COUNTROWS(ref_references), ref_references[ref_status] = "denied"), [Total References]) * 100,2), "%")
+		lineageTag: 19a5ffde-9bdf-4add-b96a-6a9dab94c16c
+
+	measure 'Expired %' = CONCATENATE(ROUND(DIVIDE(CALCULATE(COUNTROWS(ref_references), ref_references[ref_status] = "expired"), [Total References]) * 100,2), "%")
+		lineageTag: 58f8fe80-9d10-4578-9493-8046b2d981eb
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 97348147-ac19-4f20-ada9-403ecc8df0d9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Meaures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = ed2cd170c8854b86bb2230e670e3fab8
+
