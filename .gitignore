@@ -1,2 +1,7 @@
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
+/.venv/
+.idea
+
+__pycache__
+
